@@ -1,0 +1,33 @@
+@import "vars";
+@import "mixins";
+
+//체크박스 만들기
+//<label class="checkbox"><input type="checkbox" id="onedayCheck" /><span class="label">내용</span></label>
+.checkbox {
+  input {
+    display: none;
+  }
+  input:checked ~ .label:after {
+    background-color: $main-color;
+    border: none;
+    content: "\2713";
+    color: #fff;
+    @include longShadow(darken($main-color, 20), right, 10);
+  }
+  .label {
+    display: flex;
+    align-items: center;
+    user-select: none;
+    &:after {
+      content: "";
+      @include flexCenter();
+      overflow: hidden;
+      width: 24px;
+      height: 24px;
+      border: 2px solid $gray-color;
+      border-radius: 3px;
+      margin-left: 6px;
+      box-sizing: border-box;
+    }
+  }
+}
